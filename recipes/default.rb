@@ -55,6 +55,7 @@ template "#{node['freeradius']['conf_dir']}/sites-available/default" do
   owner 'root'
   group node['freeradius']['group']
   action :create
+  notifies :restart, 'service[freeradius]'
 end
 
 template "#{node['freeradius']['conf_dir']}/sites-available/inner-tunnel" do
@@ -63,7 +64,14 @@ template "#{node['freeradius']['conf_dir']}/sites-available/inner-tunnel" do
   owner 'root'
   group node['freeradius']['group']
   action :create
+  notifies :restart, 'service[freeradius]'
 end
 
 # Do we want LDAP?
 include_recipe 'freeradius::ldap' if node['freeradius']['use_ldap']
+
+service 'freeradius' do
+  service_name node['freeradius']['service']
+  supports [:restart => true, :status => false, :reload => false]
+  action [:enable, :start]
+end

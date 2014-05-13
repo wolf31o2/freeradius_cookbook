@@ -29,4 +29,5 @@ template "#{node['freeradius']['conf_dir']}/modules/ldap" do
   owner 'root'
   group node['freeradius']['group']
   action :create
+  notifies :restart, 'service[freeradius]'
 end
