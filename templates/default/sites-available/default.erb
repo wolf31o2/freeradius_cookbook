@@ -182,11 +182,12 @@ authorize {
 	#  configure the 'etc_smbpasswd' module, above.
 #	etc_smbpasswd
 
+<% if node['freeradius']['use_ldap'] %>
 	#
 	#  The ldap module will set Auth-Type to LDAP if it has not
 	#  already been set
-#	ldap
-
+	ldap
+<% end %>
 	#
 	#  Enforce daily limits on time spent logged in.
 #	daily
