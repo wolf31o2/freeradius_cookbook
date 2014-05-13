@@ -296,15 +296,16 @@ authenticate {
 	#  FreeRADIUS configurations.
 	#
 	unix
-
+<% if node['freeradius']['use_ldap'] %>
 	# Uncomment it if you want to use ldap for authentication
 	#
 	# Note that this means "check plain-text password against
 	# the ldap database", which means that EAP won't work,
 	# as it does not supply a plain-text password.
-#	Auth-Type LDAP {
-#		ldap
-#	}
+	Auth-Type LDAP {
+		ldap
+	}
+<% end %>
 
 	#
 	#  Allow EAP authentication.
