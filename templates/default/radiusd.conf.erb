@@ -65,7 +65,7 @@ radacctdir = ${logdir}/radacct
 name = radiusd
 
 #  Location of config and logfiles.
-confdir = ${raddbdir}
+confdir = <%= node['freeradius']['conf_dir'] %>
 run_dir = ${localstatedir}/run/${name}
 
 # Should likely be ${localstatedir}/lib/radiusd
