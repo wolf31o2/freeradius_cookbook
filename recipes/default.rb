@@ -22,7 +22,7 @@ package 'freeradius' do
   action :install
 end
 
-# Create conf_dir and sites-available
+# Create conf_dir, modules, and sites-available
 directory node['freeradius']['conf_dir'] do
   mode '0755'
   owner 'root'
@@ -36,7 +36,13 @@ directory "#{node['freeradius']['conf_dir']}/sites-available' do
   owner 'root'
   group 'radiusd'
   action :create
-  recursive true
+end
+
+directory "#{node['freeradius']['conf_dir']}/modules' do
+  mode '0755'
+  owner 'root'
+  group 'radiusd'
+  action :create
 end
 # End directories
 
@@ -47,4 +53,9 @@ template "#{node['freeradius']['conf_dir']}/sites-available/default' do
   owner 'root'
   group 'radiusd'
   action :create
+end
+
+#
+if node['freeradius']['use_ldap']
+  include_recipe 'freeradius::ldap'
 end

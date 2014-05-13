@@ -1,6 +1,6 @@
 #
 # Cookbook Name:: freeradius
-# Attributes:: default
+# Recipe:: ldap
 #
 # Copyright (C) 2013-2014 Continuuity, Inc.
 #
@@ -17,6 +17,16 @@
 # limitations under the License.
 #
 
-default['freeradius']['conf_dir'] = '/etc/raddb'
+# Install package
+package 'freeradius-ldap' do
+  action :install
+end
 
-default['freeradius']['use_ldap'] = false
+# Install module template
+template "#{node['freeradius']['conf_dir']}/modules/ldap" do
+  source 'modules/ldap.erb'
+  mode '0640'
+  owner 'root'
+  group 'radiusd'
+  action :create
+end
