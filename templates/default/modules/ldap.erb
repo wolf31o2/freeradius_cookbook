@@ -30,11 +30,11 @@ ldap {
 	#
 	#  Note that this needs to match the name in the LDAP
 	#  server certificate, if you're using ldaps.
-	server = "ldap.your.domain"
+	server = "<%= node['freeradius']['ldap']['server'] %>"
 	#identity = "cn=admin,o=My Org,c=UA"
 	#password = mypass
-	basedn = "o=My Org,c=UA"
-	filter = "(uid=%{%{Stripped-User-Name}:-%{User-Name}})"
+	basedn = "<%= node['freeradius']['ldap']['basedn'] %>"
+	filter = "<%= node['freeradius']['ldap']['filter'] %>"
 	#base_filter = "(objectclass=radiusprofile)"
 
 	#  How many connections to keep open to the LDAP server.
@@ -113,7 +113,7 @@ ldap {
 	#  Novell may require TLS encrypted sessions before returning
 	#  the user's password.
 	#
-	# password_attribute = userPassword
+	password_attribute = "<%= node['freeradius']['ldap']['password_attribute'] %>"
 
 	#  Un-comment the following to disable Novell
 	#  eDirectory account policy check and intruder
