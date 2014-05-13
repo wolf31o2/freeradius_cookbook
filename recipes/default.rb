@@ -46,9 +46,17 @@ directory "#{node['freeradius']['conf_dir']}/modules' do
 end
 # End directories
 
-# Add default sites-available
+# Add default and inner-tunnel to sites-available
 template "#{node['freeradius']['conf_dir']}/sites-available/default' do
   source 'sites-available/default.erb'
+  mode '0640'
+  owner 'root'
+  group 'radiusd'
+  action :create
+end
+
+template "#{node['freeradius']['conf_dir']}/sites-available/inner-tunnel' do
+  source 'sites-available/inner-tunnel.erb'
   mode '0640'
   owner 'root'
   group 'radiusd'
