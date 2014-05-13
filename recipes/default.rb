@@ -65,8 +65,5 @@ template "#{node['freeradius']['conf_dir']}/sites-available/inner-tunnel" do
   action :create
 end
 
-#
-if node['freeradius']['use_ldap']
-  include_recipe 'freeradius::ldap'
-end
-
+# Do we want LDAP?
+include_recipe 'freeradius::ldap' if node['freeradius']['use_ldap']
