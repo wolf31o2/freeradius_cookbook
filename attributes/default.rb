@@ -17,6 +17,15 @@
 # limitations under the License.
 #
 
-default['freeradius']['conf_dir'] = '/etc/raddb'
-
+# Global options
 default['freeradius']['use_ldap'] = false
+
+# Platform-specific options
+case node['platform_family']
+when 'debian'
+  default['freeradius']['conf_dir'] = '/etc/freeradius'
+  default['freeradius']['group'] = 'freerad'
+when 'rhel'
+  default['freeradius']['conf_dir'] = '/etc/raddb'
+  default['freeradius']['group'] = 'radiusd'
+end

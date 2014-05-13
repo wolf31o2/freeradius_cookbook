@@ -27,6 +27,6 @@ template "#{node['freeradius']['conf_dir']}/modules/ldap" do
   source 'modules/ldap.erb'
   mode '0640'
   owner 'root'
-  group 'radiusd'
+  group node['freeradius']['group']
   action :create
 end
