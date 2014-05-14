@@ -48,6 +48,16 @@ directory "#{node['freeradius']['conf_dir']}/modules" do
 end
 # End directories
 
+# clients.conf
+template "#{node['freeradius']['conf_dir']}/clients.conf" do
+  source 'clients.conf.erb'
+  mode '0640'
+  owner 'root'
+  group node['freeradius']['group']
+  action :create
+  notifies :restart, 'service[freeradius]'
+end
+
 # Add default and inner-tunnel to sites-available
 template "#{node['freeradius']['conf_dir']}/sites-available/default" do
   source 'sites-available/default.erb'

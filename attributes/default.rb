@@ -19,6 +19,9 @@
 
 # Global options
 default['freeradius']['use_ldap'] = false
+default['freeradius']['local_secret'] = 'testing123'
+default['freeradius']['remote_clients'] = []
+default['freeradius']['remote_secret'] = 'insecure123'
 
 # Platform-specific options
 case node['platform_family']

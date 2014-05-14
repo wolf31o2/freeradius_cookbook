@@ -98,7 +98,7 @@ client localhost {
 	#  The default secret below is only for testing, and should
 	#  not be used in any real environment.
 	#
-	secret		= testing123
+	secret		= <%= node['freeradius']['local_secret'] %>
 
 	#
 	#  Old-style clients do not send a Message-Authenticator
@@ -232,3 +232,10 @@ client localhost {
 #		secret = testing123
 #        }
 #}
+<% unless node['freeradius']['remote_clients'].empty? %>
+<% node['freeradius']['remote_clients'].each do |client| %>
+client <%= client %> {
+  secret = <%= node['freeradius']['remote_secret'] %>
+}
+<% end %>
+<% end %>
