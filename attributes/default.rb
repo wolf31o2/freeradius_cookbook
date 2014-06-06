@@ -27,10 +27,12 @@ default['freeradius']['remote_secret'] = 'insecure123'
 case node['platform_family']
 when 'debian'
   default['freeradius']['conf_dir'] = '/etc/freeradius'
+  default['freeradius']['user'] = 'freerad'
   default['freeradius']['group'] = 'freerad'
   default['freeradius']['service'] = 'freeradius'
 when 'rhel'
   default['freeradius']['conf_dir'] = '/etc/raddb'
+  default['freeradius']['user'] = 'radiusd'
   default['freeradius']['group'] = 'radiusd'
   default['freeradius']['service'] = 'radiusd'
 end
