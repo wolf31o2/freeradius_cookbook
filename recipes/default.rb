@@ -26,7 +26,7 @@ end
 
 # Create conf_dir, modules, and sites-available
 directory node['freeradius']['conf_dir'] do
-  mode '0755'
+  mode '02751'
   owner 'root'
   group node['freeradius']['group']
   action :create
@@ -34,7 +34,7 @@ directory node['freeradius']['conf_dir'] do
 end
 
 directory "#{node['freeradius']['conf_dir']}/sites-available" do
-  mode '0755'
+  mode '02751'
   owner 'root'
   group node['freeradius']['group']
   action :create
@@ -43,7 +43,7 @@ end
 directory "#{node['freeradius']['conf_dir']}/modules" do
   mode '0755'
   owner 'root'
-  group node['freeradius']['group']
+  group 'root'
   action :create
 end
 # End directories
@@ -61,18 +61,18 @@ end
 # Add default and inner-tunnel to sites-available
 template "#{node['freeradius']['conf_dir']}/sites-available/default" do
   source 'sites-available/default.erb'
-  mode '0640'
+  mode '0644'
   owner 'root'
-  group node['freeradius']['group']
+  group 'root'
   action :create
   notifies :restart, 'service[freeradius]'
 end
 
 template "#{node['freeradius']['conf_dir']}/sites-available/inner-tunnel" do
   source 'sites-available/inner-tunnel.erb'
-  mode '0640'
+  mode '0644'
   owner 'root'
-  group node['freeradius']['group']
+  group 'root'
   action :create
   notifies :restart, 'service[freeradius]'
 end
