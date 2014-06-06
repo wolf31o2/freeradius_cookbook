@@ -25,9 +25,9 @@ end
 # Install module template
 template "#{node['freeradius']['conf_dir']}/modules/ldap" do
   source 'modules/ldap.erb'
-  mode '0640'
+  mode '0644'
   owner 'root'
-  group node['freeradius']['group']
+  group 'root'
   action :create
   notifies :restart, 'service[freeradius]'
 end
