@@ -27,7 +27,7 @@ end
 # Create conf_dir, modules, and sites-available
 directory node['freeradius']['conf_dir'] do
   mode '02751'
-  owner 'root'
+  owner node['freeradius']['user']
   group node['freeradius']['group']
   action :create
   recursive true
@@ -35,7 +35,7 @@ end
 
 directory "#{node['freeradius']['conf_dir']}/sites-available" do
   mode '02751'
-  owner 'root'
+  owner node['freeradius']['user']
   group node['freeradius']['group']
   action :create
 end
