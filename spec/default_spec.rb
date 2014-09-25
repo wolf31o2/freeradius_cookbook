@@ -14,6 +14,20 @@ describe 'freeradius::default' do
       end
     end
 
+    it 'creates freeradius service' do
+      expect(chef_run).to start_service('freeradius')
+    end
+
+    it 'enables freeradius service' do
+      expect(chef_run).to enable_service('freeradius')
+    end
+
+    %w(/etc/raddb/clients.conf /etc/raddb/sites-available/default /etc/raddb/sites-available/inner-tunnel).each do |template|
+      it "creates #{template} from template" do
+        expect(chef_run).to create_template(template)
+      end
+    end
+
     %w(/etc/raddb /etc/raddb/modules /etc/raddb/sites-available).each do |dir|
       it "creates #{dir} directory" do
         expect(chef_run).to create_directory(dir)
@@ -27,6 +41,12 @@ describe 'freeradius::default' do
         node.automatic['domain'] = 'example.com'
         node.override['freeradius']['use_ldap'] = true
       end.converge(described_recipe)
+    end
+
+    %w(/etc/freeradius/clients.conf /etc/freeradius/sites-available/default /etc/freeradius/sites-available/inner-tunnel).each do |template|
+      it "creates #{template} from template" do
+        expect(chef_run).to create_template(template)
+      end
     end
 
     %w(/etc/freeradius /etc/freeradius/modules /etc/freeradius/sites-available).each do |dir|
