@@ -5,9 +5,9 @@ If you want to help make the freeradius cookbook better, by adding new features,
  * Fork freeradius_cookbook into your own GitHub repository
  * Create a topic branch with an appropriate name
  * Work on your favorite feature to your content
- * Once you are satisifed, create a pull request by going to the continuuity/freeradius_cookbook project.
+ * Once you are satisifed, create a pull request by going to the wolf31o2/freeradius_cookbook project.
  * Address all the review comments
- * Once addressed, the changes will be committed to the continuuity/freeradius_cookbook repo.
+ * Once addressed, the changes will be committed to the wolf31o2/freeradius_cookbook repo.
 
 ## License
 
