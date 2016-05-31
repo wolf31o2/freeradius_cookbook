@@ -38,10 +38,6 @@ These are set to the FreeRADIUS shipped defaults on CentOS. You will need to cha
 * `default` - Installs `freeradius` package and configures `clients.conf`
 * `ldap` - Installs and configures LDAP backend support files
 
-# Testing
-
-This cookbook requires the `vagrant-omnibus` and `vagrant-berkshelf` Vagrant plugins to be installed.
-
 # License
 
 Licensed under the Apache License, Version 2.0 (the "License"); you may not use this software except in compliance with the License. You may obtain a copy of the License at
