@@ -16,7 +16,7 @@ end
 gem 'chef-zero', '< 4.6' if RUBY_VERSION.to_f < 2.1
 
 gem 'ridley', '~> 4.2.0'
-gem 'faraday', '< 0.9.2'
+gem 'faraday', '< 0.9.3'
 gem 'rubocop'
 gem 'rubocop-checkstyle_formatter', require: false
 gem 'rainbow', '<= 1.99.1'
