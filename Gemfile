@@ -19,7 +19,7 @@ gem 'ridley', '~> 4.2.0'
 gem 'faraday', '< 0.9.2'
 gem 'rubocop'
 gem 'rubocop-checkstyle_formatter', require: false
-gem 'rainbow', '<= 1.99.1'
+gem 'rainbow', '<= 3.0.1'
 
 group :integration do
   gem 'test-kitchen'
